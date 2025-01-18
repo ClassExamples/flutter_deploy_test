@@ -36,9 +36,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Generate version string
-        run: echo "::set-env name=VERSION_STR::${GITHUB_REF##*/}"
-
       - uses: actions/download-artifact@v4
         with:
           name: android_debug
@@ -47,5 +44,5 @@ jobs:
         with:
           allowUpdates: true
           artifacts: "android_release/*.apk"
-          name: Release ${{ steps.version.outputs.VERSION_STR }}
+          name: Release Apk
           token: ${{ secrets.GITHUB_TOKEN }}
