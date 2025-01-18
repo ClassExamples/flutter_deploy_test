@@ -39,7 +39,7 @@ jobs:
       - name: Generate version string
         run: echo "::set-env name=VERSION_STR::${GITHUB_REF##*/}"
 
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v4
         with:
           name: android_debug
 
