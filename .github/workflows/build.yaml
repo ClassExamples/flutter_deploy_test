@@ -30,3 +30,19 @@ jobs:
         with:
           name: android_debug
           path: "build/app/outputs/flutter-apk/app-release.apk"
+
+
+  release:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: android_debug
+
+      - uses: ncipollo/release-action@v1
+        with:
+          allowUpdates: true
+          artifacts: "android_release/*.apk"
+          name: Release Apk
+          token: ${{ secrets.GITHUB_TOKEN }}
