@@ -47,6 +47,5 @@ jobs:
         with:
           allowUpdates: true
           artifacts: "android_release/*.apk"
-          name: Release ${{ env.VERSION_STR }}
-          tag: ${{ env.VERSION_STR }}
+          name: Release ${{ steps.version.outputs.VERSION_STR }}
           token: ${{ secrets.GITHUB_TOKEN }}
